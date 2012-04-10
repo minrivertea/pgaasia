@@ -1,0 +1,81 @@
+{% load thumbnail %}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+     
+<html lang="en">
+
+<head>
+{% block extra-head %}{% endblock %}
+    
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta content="en-gb" http-equiv="Content-Language" />
+	<meta content="{% block metadescription %}{% endblock %}" name="description" /> 
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	{% block canonical %}{% endblock %}
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/styles.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/pybb.css" type="text/css" />
+    
+    <title>{% block title %}{% block pagetitle %}{% endblock %} - {{ sitename|lower }}{% endblock %}</title>
+    <!--[if lte IE 6]>
+		<link rel="stylesheet" media="screen" type="text/css" href="/css/ie6.css" />
+	<![endif]-->
+
+   
+
+{% block extracss %}{% endblock %}
+
+</head>
+
+<body>
+
+	    <!-- The header area -->
+		<div id="header">
+			<div class="super">
+			<div id="logo"></div>
+			
+			<ul id="navigation">
+				<li><a href="/">Home</a></li>
+				<li><a href="/forum/">Forums</a></li>
+				<li><a href="/about/">About</a></li>
+				{% if user.is_authenticated %}
+					<li><a href="{% url pybb:user user %}">Profile</a></li>
+					<li><a href="{% url auth_logout %}">Logout</a></li>
+				{% else %}
+					<li><a href="{% url auth_login %}">Login</a> / <a href="/accounts/register/">Register</a></li>
+				{% endif %}
+			</ul>
+			</div>
+		</div>
+		
+		<!-- the main section of the page -->
+		<div class="super">
+			{% block breadcrumb %}{% endblock %}
+	    	{% block content %}{% endblock %}
+	    </div>
+
+		
+		<!-- The footer -->
+		<div id="footer"></div>
+
+    
+    
+    </div>
+
+{% block extrajs %}{% endblock %}
+
+{% if messages %}
+<script type="text/javascript">
+function closeMessages() {
+	$('#header-messages').slideUp(300)
+}
+
+window.setTimeout(closeMessages, 8000, true);
+</script>
+{% endif %}
+
+
+</body>
+
+</html>

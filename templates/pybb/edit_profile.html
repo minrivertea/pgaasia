@@ -1,0 +1,36 @@
+{% extends 'pybb/base.html' %}
+{% load i18n thumbnail pybb_tags %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css"/>
+{% endblock %}
+
+{% block title %}{% trans "Profile editing" %}{% endblock title %}
+
+{% block content %}
+    <h1>{% trans "Edit your profile" %}</h1>
+    {% include 'pybb/avatar.html' %}
+    <p><a href="{% url auth_password_change %}">{% trans "Change your password &raquo;" %}</a></p>
+    <form method="post" enctype="multipart/form-data" class="profile-edit">
+        {% csrf_token %}
+            {{ form.as_p }}
+            <p>
+               <input class="button" type="submit" value="{% trans 'Save' %}" />
+            </p>
+    </form>
+    
+    {% if user.subscriptions.all %}
+    <h1>{% trans "Subscriptions on topics" %}</h1>
+    <ul>
+        {% for sub in user.subscriptions.all %}
+            <li>
+                {% pybb_link sub %}
+                &mdash;
+                <strong>
+                    <a href="{% url pybb:delete_subscription sub.id %}">{% trans "delete" %}</a>
+                </strong>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock content %}

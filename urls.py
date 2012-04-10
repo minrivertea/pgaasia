@@ -10,13 +10,13 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'website.views.home', name='home'),
+    url(r'^$', 'pgaasia.views.home', name='home'),
     # url(r'^website/', include('website.foo.urls')),
     (r'^forum/', include('pybb.urls', namespace='pybb')),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^accounts/register/$', register,
-        {'backend': 'website.regbackend.RegBackend',},        
+        {'backend': 'pgaasia.regbackend.RegBackend',},        
         name='registration_register'
     ),
 

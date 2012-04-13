@@ -104,7 +104,7 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'pgaasia.urls'
+ROOT_URLCONF = 'urls'
 AUTH_PROFILE_MODULE = 'pybb.Profile'
 
 # Python dotted path to the WSGI application used by Django's runserver.

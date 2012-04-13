@@ -108,8 +108,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'urls'
 AUTH_PROFILE_MODULE = 'pybb.Profile'
 
-# Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'pgaasia.wsgi.application'
+
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, "templates/"),

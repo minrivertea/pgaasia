@@ -83,7 +83,6 @@ STATICFILES_FINDERS = (
 
 CONTEXT_PROCESSORS = (
     'pybb.context_processors.processor',
-    'context_processors.common',
     )
 
 # List of callables that know how to import templates from various sources.

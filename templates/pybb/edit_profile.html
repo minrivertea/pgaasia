@@ -1,11 +1,12 @@
 {% extends 'pybb/base.html' %}
 {% load i18n thumbnail pybb_tags %}
 
+{% block pagetitle %}Edit your profile{% endblock %}
+
 {% block extracss %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css"/>
 {% endblock %}
 
-{% block title %}{% trans "Profile editing" %}{% endblock title %}
 
 {% block content %}
     <h1>{% trans "Edit your profile" %}</h1>

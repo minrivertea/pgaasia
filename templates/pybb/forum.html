@@ -1,7 +1,7 @@
-{% extends 'pybb/base.html' %}
+{% extends 'base.html' %}
 {% load pybb_tags i18n %}
 
-{% block title %}{{ forum.name }}{% endblock title %}
+{% block pagetitle %}{{ forum.name }}{% endblock %}
 
 {% block breadcrumb %}
     {% with forum as object %}

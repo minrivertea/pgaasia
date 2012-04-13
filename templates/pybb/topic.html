@@ -1,5 +1,7 @@
-{% extends 'pybb/base.html' %}
+{% extends 'base.html' %}
 {% load pybb_tags i18n %}
+
+{% block pagetitle %}{{ topic.name }}{% endblock %}
 
 {% block extracss %}
 <style type="text/css">
@@ -16,7 +18,6 @@
 </style>
 {% endblock %}
 
-{% block title %}{{ topic }}{% endblock %}
 
 {% block head %}
     {{ block.super }}

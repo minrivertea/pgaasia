@@ -1,4 +1,9 @@
 {% load i18n pybb_tags %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css"/>
+{% endblock %}
+
 <form class="post-form" action="
     {% if forum %}
         {% url pybb:add_topic forum.pk %}
@@ -10,13 +15,7 @@
         {% endif %}
     {% endif %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-       <fieldset>
             {{ form.as_p }}
-            <div id='emoticons'>
-                {% for smile, url in form.available_smiles.items %}
-                    <a href='#' title='{{ smile|safe }}'><img src='{{ STATIC_URL }}{{ form.smiles_prefix }}{{ url }}'></a>
-                {% endfor %}
-            </div>
             {% include "pybb/attachments_formset.html" %}
             <p class="submit">
                 {% if PYBB_BUTTONS.submit %}
@@ -25,5 +24,4 @@
                    <input type="submit" class="button" value="{% trans 'Submit' %}" />
                 {% endif %}
             </p>
-    </fieldset>
 </form>

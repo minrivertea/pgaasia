@@ -7,7 +7,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Chris West', 'chris@minrivertea.com'),
 )
 
 MANAGERS = ADMINS
@@ -104,7 +104,7 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'pgaasia.urls'
 AUTH_PROFILE_MODULE = 'pybb.Profile'
 
 # Python dotted path to the WSGI application used by Django's runserver.

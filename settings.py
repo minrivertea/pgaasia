@@ -83,6 +83,7 @@ STATICFILES_FINDERS = (
 
 CONTEXT_PROCESSORS = (
     'pybb.context_processors.processor',
+    'pgaasia.context_processors.common',
     )
 
 # List of callables that know how to import templates from various sources.
@@ -147,6 +148,7 @@ ACCOUNT_ACTIVATION_DAYS = 7
 EMAIL_HOST = 'localhost'
 EMAIL_HOST_USER = ''
 EMAIL_PORT = '25'
+SITE_NAME = 'PGA Links Asia'
 
 
 # A sample logging configuration. The only tangible logging

@@ -104,7 +104,7 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'pgaasia.urls'
 AUTH_PROFILE_MODULE = 'pybb.Profile'
 
 

@@ -30,7 +30,8 @@
         <div class="clear"></div>
     </div>
     <div class='controls'>
-    	<a href="{% url pybb:edit_profile %}">Edit your profile &raquo;</a>
+    	<a href="{% url pybb:edit_profile %}">Edit your profile &raquo;</a> | 
+    	<a href="{% url auth_password_reset %}">Change your password</a> | 
         {% if perms.pybb.block_users %}
             <a href='{% url pybb:block_user target_user.username %}'>{% trans 'Block' %}</a>
         {% endif %}

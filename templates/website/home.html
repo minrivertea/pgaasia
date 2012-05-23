@@ -74,6 +74,10 @@ h1 {
 
 {% block content %}
 
+{% if message %}
+<h1>{{ message }}</h1>
+{% endif %}
+
 <div class="leftbox">
 <h1>Welcome to the Asia-China PGA Discussion forum!</h1>
 <p><strong>Participate in discussions and decisions that will shape the final frontier of the golfing industry - China!</strong></p>

@@ -127,8 +127,7 @@ INSTALLED_APPS = (
     'pure_pagination',
     'django.contrib.admin',
     'registration',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'pgaasia.website',
 )
 
 # forum specific settings

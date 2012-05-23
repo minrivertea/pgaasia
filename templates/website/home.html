@@ -91,14 +91,17 @@ h1 {
 
 <div class="rightbox">
 	{% for f in forums %}
-	{% thumbnail f.promo_image "225x200" crop="center" as im %}
-	{{ im.url }}
-	<div class="box" style="background: url('{{ STATIC_URL }}{{ im.url }}') no-repeat;">
-		<a href="{% url pybb:forum f.id %}"><span class="link"></span></a>
-		<h3>{{ f.name }} &raquo;</h3>
-	</div>
-	{% endthumbnail %}
+
+    	{% thumbnail f.promo_image "225x200" crop="center" as im %}
+    	<div class="box" style="background: url('{{ STATIC_URL }}{{ im.url }}') no-repeat;">
+    		<a href="{% url pybb:forum f.id %}"><span class="link"></span></a>
+    		<h3>{{ f.name }} &raquo;</h3>
+    	</div>
+    	{% endthumbnail %}
+	
 	{% endfor %}
+	
+	
 	{% if request.user.is_superuser %}
 	<div class="box pink">
 		<a href="{% url admin:pybb_forum_add %}"><span class="link"></span></a>

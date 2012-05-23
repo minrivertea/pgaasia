@@ -18,7 +18,7 @@ def render(request, template, context_dict=None, **kwargs):
     )
 
 def home(request):
-    forums = NewForum.objects.all()
+    forums = NewForum.objects.filter(hidden=False)
     return render(request, 'website/home.html', locals())
     
 

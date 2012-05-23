@@ -92,12 +92,19 @@ h1 {
 <div class="rightbox">
 	{% for f in forums %}
 
+    	{% if f.promo_image %}
     	{% thumbnail f.promo_image "225x200" crop="center" as im %}
     	<div class="box" style="background: url('{{ STATIC_URL }}{{ im.url }}') no-repeat;">
     		<a href="{% url pybb:forum f.id %}"><span class="link"></span></a>
     		<h3>{{ f.name }} &raquo;</h3>
     	</div>
     	{% endthumbnail %}
+    	{% else %}
+    	<div class="box">
+    		<a href="{% url pybb:forum f.id %}"><span class="link"></span></a>
+    		<h3>{{ f.name }} &raquo;</h3>
+    	</div>
+    	{% endif %}
 	
 	{% endfor %}
 	

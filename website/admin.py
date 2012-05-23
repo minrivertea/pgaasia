@@ -3,6 +3,7 @@ from django.contrib import admin
 
 
 admin.site.register(NewForum)    
+admin.site.register(GlobalSettings)
 
 
 

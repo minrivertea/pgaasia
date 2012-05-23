@@ -81,7 +81,9 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-CONTEXT_PROCESSORS = (
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'pgaasia.context_processors.common',
     'pybb.context_processors.processor',
     )
 

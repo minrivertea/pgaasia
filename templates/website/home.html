@@ -79,12 +79,7 @@ h1 {
 {% endif %}
 
 <div class="leftbox">
-<h1>Welcome to the Asia-China PGA Discussion forum!</h1>
-<p><strong>Participate in discussions and decisions that will shape the final frontier of the golfing industry - China!</strong></p>
-
-<p>If you're a PGA Professional in Asia, you can use the forums, topics and discussion areas on this site to express your opinions and collaborate with other golf pioneers in China. Our mandate is to allow open and fair discussion of important issues and consider the views of PGA professionals and intelligent members of the golf community at large.</p>
-
-<p class="note">Important Note: any references to subjects deemed politically sensitive by the Chinese government will be removed. We ask users to use their discretion when discussing culturally sensitive issues, and in the long-term, this will ensure our website remains focussed on golf, and visible and accessible for local Chinese and international users. Please treat this unique arena wisely!</p>
+{{ globalsettings.homepage_intro_text|safe }}
 </div>
 
 
@@ -94,7 +89,7 @@ h1 {
 
     	{% if f.promo_image %}
     	{% thumbnail f.promo_image "225x200" crop="center" as im %}
-    	<div class="box" style="background: url('{{ STATIC_URL }}{{ im.url }}') no-repeat;">
+    	<div class="box" style="background: url('{{ static_url }}{{ im.url }}') no-repeat;">
     		<a href="{% url pybb:forum f.id %}"><span class="link"></span></a>
     		<h3>{{ f.name }} &raquo;</h3>
     	</div>

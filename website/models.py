@@ -3,6 +3,12 @@ from django.db import models
 from pybb.models import Forum
 from django.utils.translation import ugettext_lazy as _
 
+class GlobalSettings(models.Model):
+    site_name = models.CharField(max_length="200", help_text="The name of this website")
+    homepage_intro_text = models.TextField(blank=True, null=True,
+        help_text="Use HTML. The introduction text on the homepage, before the list of forums")
+    
+
 class NewForum(Forum):
     promo_image = models.ImageField(upload_to='images/forums', blank=True, null=True)
     intro = models.TextField(blank=True, null=True)

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n thumbnail  %}
 
 {% block pagetitle %}Home{% endblock %}
 
@@ -87,12 +87,17 @@ h1 {
 <p class="note">Important Note: any references to subjects deemed politically sensitive by the Chinese government will be removed. We ask users to use their discretion when discussing culturally sensitive issues, and in the long-term, this will ensure our website remains focussed on golf, and visible and accessible for local Chinese and international users. Please treat this unique arena wisely!</p>
 </div>
 
+
+
 <div class="rightbox">
 	{% for f in forums %}
-	<div class="box">
+	{% thumbnail f.promo_image "225x200" crop="center" as im %}
+	{{ im.url }}
+	<div class="box" style="background: url('{{ STATIC_URL }}{{ im.url }}') no-repeat;">
 		<a href="{% url pybb:forum f.id %}"><span class="link"></span></a>
 		<h3>{{ f.name }} &raquo;</h3>
 	</div>
+	{% endthumbnail %}
 	{% endfor %}
 	{% if request.user.is_superuser %}
 	<div class="box pink">

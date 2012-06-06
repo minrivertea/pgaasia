@@ -106,7 +106,7 @@ h1 {
 	
 	{% if request.user.is_superuser %}
 	<div class="box pink">
-		<a href="{% url admin:pybb_forum_add %}"><span class="link"></span></a>
+		<a href="/admin/website/newforum/add/"><span class="link"></span></a>
 		<h3>Add a new forum &raquo;</h3>
 	</div>
 	{% endif %}

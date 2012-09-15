@@ -12,7 +12,7 @@
     {% csrf_token %}
     <div style="display:none;"><label for="id_login">User:</label> <input type="text" name="login" value="root" id="id_login" /></div>
     <p><label for="id_body">Your message:</label> <textarea id="id_body" rows="10" cols="40" name="body"></textarea>
-    <input type="hidden" name="name" id="id_name" value="{{ user }}" /></p>
+    <p><label for="id_name">Title</label> <input type="text" name="name" id="id_name" value="" /></p>
 
 
             {% include "pybb/attachments_formset.html" %}

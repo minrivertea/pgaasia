@@ -13,7 +13,7 @@
     <tr>
         {% if forloop.first %}
         <td class="first" valign="top">
-            <strong>Posted by <a href="{{ post.user.get_profile.get_absolute_url }}">{{ post.user.get_profile.user }}</a> on {{ post.created|date:"d M Y h:m" }} | {{ topic.post_count }} Replies</strong><br/><br/>
+            <strong>Posted by <a href="{{ post.user.get_profile.get_absolute_url }}">{{ post.user.get_profile.user }}</a> on {{ post.created|date:"d M Y h:m" }} | {{ topic.post_count }} Replies {% if post.user == user %}| <a href="{% url pybb:edit_post pk=post.id %}">Edit</a>{% endif %}</strong><br/><br/>
         </td>
         </tr>
         <tr>

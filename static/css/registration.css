@@ -32,3 +32,17 @@ p input {
   color: red;
   font-weight: bold;
 }
+
+form textarea {
+  width: 700px;
+  border: 1px solid #c1c1c1;
+  border-radius: 4px;
+  padding: 10px;
+  line-height: 1.6em;
+  font-size: 14px;   
+}
+
+form label {
+  width: 120px;
+  margin-right: 20px;
+}

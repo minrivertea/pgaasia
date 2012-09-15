@@ -4,15 +4,27 @@
 <link rel="stylesheet" href="{{ static_url }}css/registration.css"/>
 {% endblock %}
 
+{% if form.errors %}
+<span class="red">
+<strong>Your post has errors in these fields:</strong><br/>
+<ul>
 {% for x in form.errors %}
- {{ x }}
+ <li>{{ x }}</li>
 {% endfor %}
+</ul>
+{% endif %}
+</span>
 
 <form class="post-form" action="{% if forum %}{% url pybb:add_topic forum.pk %}{% else %}{% if topic %}{% url pybb:add_post topic.pk %}{% else %}{% url pybb:edit_post pk=object.pk %}{% endif %}{% endif %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div style="display:none;"><label for="id_login">User:</label> <input type="text" name="login" value="root" id="id_login" /></div>
-    <p><label for="id_body">Your message:</label> <textarea id="id_body" rows="10" cols="40" name="body"></textarea>
+    <p><label for="id_body">Your message:</label> <textarea id="id_body" rows="10" cols="40" name="body">{{ post.body }}</textarea>
+    
+    {% if forum %}
     <p><label for="id_name">Title</label> <input type="text" name="name" id="id_name" value="" /></p>
+    {% else %}
+    <input type="hidden" name="name" id="id_name" value="{{ post.topic.name }}" />
+    {% endif %}
 
 
             {% include "pybb/attachments_formset.html" %}

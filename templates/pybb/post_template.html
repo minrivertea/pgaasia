@@ -35,7 +35,12 @@
         </td>
         {% endif %}
         <td class="content">
+            
+            {% if user.is_superuser %}
+            {{ post.body }}
+            {% else %}
             {{ post.body_html|safe }}
+            {% endif %}
             
             {% if not forloop.first %}
             {% if not user.is_authenticated or user.get_profile.show_signatures %}

@@ -36,8 +36,8 @@
         {% endif %}
         <td class="content">
         
-        {% if post.user.is_superuser %}
-        {{ post.body|safe }}
+        {% if post.user.is_superuser and post.pk == 56 %}
+           {{ post.body|safe }}
         {% else %}
         {{ post.body_html|safe }}
         {% endif %}

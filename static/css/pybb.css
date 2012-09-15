@@ -36,9 +36,9 @@ legend {
 
 .category-table td, .category-table th, .topic-list td, .topic-list th {
     margin: 1px;
-    padding: 10px 5px 10px 5px;
+    padding: 10px 15px;
     vertical-align: middle;
-
+    font-size: 14px;
 }
 
 .forum-description {
@@ -68,9 +68,8 @@ legend {
 
 .head-row {
   background-color: #2c2c2c;
-  background-image: -moz-linear-gradient(center top , #333333, #222222);
-  color: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;	
+  color: #333;
+  display: none;
 }
 
 .forum-name {
@@ -119,15 +118,38 @@ legend {
 
 .post {
     width: 99%;
-    margin: 3px 0 5px 0;
+    margin: 3px 0 10px 0;
     clear: both;
+    background: #f1f1f1;
+    position: relative;
+}
+
+.post.first-post {
+   background: none;
+   margin: 0 0 30px 0;   
 }
 
 
 .post .info {
-    width: 200px;
-    border: 1px solid #CCC;
+    width: 100px;
     padding: 10px;
+    overflow: hidden;
+    max-width: 100px;
+    border-right: 1px solid #fff;
+}
+
+.post.first-post .info {
+   max-width: none;
+   padding: 0 20px 0 0;
+   width: 100px;
+}
+
+.avatar {
+  text-align: center;   
+}
+
+.post.first-post .info .avatar {
+  text-align: left;   
 }
 
 .post .info .extra-info {
@@ -137,8 +159,13 @@ legend {
 
 .post .content {
     vertical-align: top;
-    padding: 10px;
-    border: 1px solid #CCC;
+    padding: 15px 10px 10px 20px;
+    font-size: 14px;
+    line-height: 1.8em;
+}
+
+.post.first-post .content {
+   padding: 0;
 }
 
 .post-header {
@@ -146,15 +173,14 @@ legend {
    box-shadow: none;
    background-image: none;
    font-size: 80%;
-   background-color: #666;
+   background-color: #b1b1b1;
 }
 
 .post-related {
-    margin-top: 20px;
 }
 
 .post .info .author {
-    font-size: 110%;
+    font-size: 14px;
     padding: 5px;
 }
 
@@ -204,11 +230,11 @@ legend {
 
 blockquote {
     background: #f6f6f6;
-    margin: 0 0 20px 20px;
+    margin: 0 0 10px 0px;
     padding: 10px;
     font-size: 90%;
     font-style: italic;
-    color: #999;
+    color: #777;
 }
 
 /* ---- Special features --- */
@@ -231,7 +257,7 @@ blockquote {
     height: 10px;
     width: 10px;
     border-radius: 5px;
-    margin: 3px 5px;
+    margin: 3px 5px 3px -5px;
 }
 
 .unread .state-indicator {

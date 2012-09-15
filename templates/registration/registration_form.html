@@ -37,7 +37,7 @@ $('#id_name').blur( function() {
 
 
 {% block extracss %}
-<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css">
+<link rel="stylesheet" href="{{ static_url }}css/registration.css">
 
 <style type="text/css">
 
@@ -96,6 +96,10 @@ p.description {
   width: 123px;
   left: -182px;
   padding: 8px 15px 14px 15px;
+}
+
+p.spam {
+  margin-top: 0px;   
 }
 
 </style>

@@ -1,27 +1,26 @@
 {% load i18n pybb_tags %}
 
 {% block extracss %}
-<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css"/>
+<link rel="stylesheet" href="{{ static_url }}css/registration.css"/>
 {% endblock %}
 
-<form class="post-form" action="
-    {% if forum %}
-        {% url pybb:add_topic forum.pk %}
-    {% else %}
-        {% if topic %}
-            {% url pybb:add_post topic.pk %}
-        {% else %}
-            {% url pybb:edit_post pk=object.pk %}
-        {% endif %}
-    {% endif %}" method="post" enctype="multipart/form-data">
+{% for x in form.errors %}
+ {{ x }}
+{% endfor %}
+
+<form class="post-form" action="{% if forum %}{% url pybb:add_topic forum.pk %}{% else %}{% if topic %}{% url pybb:add_post topic.pk %}{% else %}{% url pybb:edit_post pk=object.pk %}{% endif %}{% endif %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-            {{ form.as_p }}
+    <div style="display:none;"><label for="id_login">User:</label> <input type="text" name="login" value="root" id="id_login" /></div>
+    <p><label for="id_body">Your message:</label> <textarea id="id_body" rows="10" cols="40" name="body"></textarea>
+    <input type="hidden" name="name" id="id_name" value="{{ user }}" /></p>
+
+
             {% include "pybb/attachments_formset.html" %}
             <p class="submit">
                 {% if PYBB_BUTTONS.submit %}
-                    <input type='image' src="{{ STATIC_URL }}{{ PYBB_BUTTONS.submit }}" alt='{% trans "Submit" %}'>
+                    <input type='image' src="{{ static_url }}{{ PYBB_BUTTONS.submit }}" alt='{% trans "Submit" %}'>
                 {% else %}
-                   <input type="submit" class="button" value="{% trans 'Submit' %}" />
+                   <input type="submit" class="button" value="{% trans 'Submit Post' %}" />
                 {% endif %}
             </p>
 </form>

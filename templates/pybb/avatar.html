@@ -5,7 +5,7 @@
     {% thumbnail post.user.get_profile.avatar "80x80" as avatar %}
         <img src="{{ avatar.url }}" alt="{{ post.user }} avatar" />
     {% empty %}
-        <img src="{{ STATIC_URL }}images/default_avatar.jpg" alt="default avatar" />
+        <img src="{{ static_url }}images/default_avatar.jpg" alt="default avatar" />
     {% endthumbnail %}
     </a>
 </div>

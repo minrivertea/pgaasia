@@ -5,16 +5,61 @@
 
 {% block extracss %}
 <style type="text/css">
-.button.quote {
+.button.functions {
   float: right;
-  font-size: 13px;
-  padding: 6px 10px 8px;	
+  font-size: 12px;
+  padding: 0px 8px 0px;	
+  position: absolute; 
+  bottom: 5px; 
+  display: none;
+}
+
+.button:link, .button:visited {
+  background: #c1c1c1;   
+}
+
+.post:hover .button:link, .post:hover .button:visited {
+  background: #0088CC;  
+  display: block; 
+}
+
+
+.post:hover .button:hover {
+  background: #005580;   
+}
+
+.quote {
+  right: 5px;
+}
+
+.delete {
+ right:60px;   
+}
+
+.edit {
+ right: 117px;   
 }
 
 .updated {
   float: right;
   padding-right: 20px;	
 }
+
+textarea#id_body {
+  border: 1px solid #c1c1c1;
+  width: 800px;
+  padding: 10px;
+}
+
+.post-form label {
+  width: 100px;
+  padding: 0 10px;   
+}
+
+.post-form .submit .button {
+  float: right;   
+}
+
 </style>
 {% endblock %}
 
@@ -37,12 +82,9 @@
     {% endwith %}
 
     <div class="posts">
-        {% if first_post %}{% ifnotequal first_post post_list.0 %}
-            {% with first_post as post %}
-                <li class="first_post">{% include "pybb/post_template.html" %}</li>
-            {% endwith %}
-        {% endifnotequal %}{% endif %}
         {% for post in post_list %}
+            
+            
             {% cycle 'odd' 'even' as rowcolors silent %}
             {% include "pybb/post_template.html" %}
         {% endfor %}
@@ -52,8 +94,33 @@
         {% include "pybb/pagination.html" %}
     {% endwith %}
 
-    {% if user.is_authenticated %}
-        <div class="controls">
+
+    {% if user.is_authenticated or PYBB_ENABLE_ANONYMOUS_POST %}
+        <h3>Add your post</h3>
+        {% if not user.get_profile.is_banned %}
+            {% if not topic.closed %}
+                {% include "pybb/post_form.html" %}
+            {% endif %}
+        {% endif %}
+    {% else %}
+        <a href="{% url registration_register %}">{% trans "Register" %}</a> {% trans "or" %} <a href="{% url auth_login %}">{% trans "login" %}</a> {% trans "to create to post a reply" %}.
+    {% endif %}
+
+    
+
+    {% if user.is_superuser or user.is_moderator or user.is_staff %}
+    <h3>Admin functions</h3>
+    
+    {% if user.is_staff %}
+        <div class='subscriber-list'>
+            {% trans "Subscribers" %}:
+            {% for subscriber in topic.subscribers.all %}
+                <a href='{{ subscriber.get_absolute_url }}'>{{ subscriber.username }}</a>,
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <div class="controls">
             {% if user.is_moderator %}
                 {% if topic.sticky %}
                     <a href="{% url pybb:unstick_topic topic.id %}">{% trans "Unstick topic" %}</a> /
@@ -80,25 +147,7 @@
                 <a href="{% url pybb:add_subscription topic.id %}">{% trans "Subscribe" %}</a>
             {% endif %}
         </div>
-    {% endif %}
 
-    {% if user.is_authenticated or PYBB_ENABLE_ANONYMOUS_POST %}
-        {% if not user.get_profile.is_banned %}
-            {% if not topic.closed %}
-                {% include "pybb/post_form.html" %}
-            {% endif %}
-        {% endif %}
-    {% else %}
-        <a href="{% url registration_register %}">{% trans "Register" %}</a> {% trans "or" %} <a href="{% url auth_login %}">{% trans "login" %}</a> {% trans "to create to post a reply" %}.
+    
     {% endif %}
-
-    {% if user.is_staff %}
-        <div class='subscriber-list'>
-            {% trans "Subscribers" %}:
-            {% for subscriber in topic.subscribers.all %}
-                <a href='{{ subscriber.get_absolute_url }}'>{{ subscriber.username }}</a>,
-            {% endfor %}
-        </div>
-    {% endif %}
-
 {% endblock %}

@@ -4,7 +4,7 @@
 {% block pagetitle %}Edit your profile{% endblock %}
 
 {% block extracss %}
-<link rel="stylesheet" href="{{ STATIC_URL }}css/registration.css"/>
+<link rel="stylesheet" href="{{ static_url }}css/registration.css"/>
 {% endblock %}
 
 
@@ -21,7 +21,7 @@
     </form>
     
     {% if user.subscriptions.all %}
-    <h1>{% trans "Subscriptions on topics" %}</h1>
+    <h1>{% trans "You're subscribed on these topics:" %}</h1>
     <ul>
         {% for sub in user.subscriptions.all %}
             <li>

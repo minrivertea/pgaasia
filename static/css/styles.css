@@ -105,6 +105,8 @@ input {
   font-family: Helvetica, Arial sans-serif;
   border: 1px solid #e1e1e1;
   border-radius: 4px;	
+  width: 500px;
+  margin-right: 10px;
 }
 
 input:focus {
@@ -117,7 +119,7 @@ label {
   font-weight: bold;
   line-height: 1.2em;
   position: relative;
-  top: 5px;	
+  top: 0px;	
 }
 
 
@@ -132,33 +134,34 @@ label {
 /* header styles */
 
 #header {
-  height: 60px;
+  height: 43px;
   width: 100%;
-  margin: 0 0 30px 0;
+  margin: 0 0 20px 0;
     background-color: #2C2C2C;
     background-image: -moz-linear-gradient(center top , #333333, #222222);
     background-repeat: repeat-x;
-    border-radius: 4px 4px 4px 4px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;	
 }
 
 #logo {
-  height: 60px;
-  width: 300px;
+  height: 43px;
+  width: 250px;
   background-color: ;
   float: left;
-  margin: 0px 20px 0 0;
+  margin: 0px;
   color: red;
   font-weight: bold;
-  font-size: 36px;
-  text-shadow: 0 1px 1px #fff inset;
+  font-size: 25px;
+  text-shadow: 0 1px 1px #000;
   padding: 5px 0 0 0;
 }
 
 #navigation {
   list-style-type: none;
   float: left;
-  margin: 20px 0 0;	
+  margin: 0px 0 0;    
+  border-left: 1px solid #111;
+  border-right: 1px solid #555;	
 }
 
 #navigation li {
@@ -168,10 +171,14 @@ label {
 }
 
 #navigation li a:link, #navigation li a:visited {
-  padding: 10px 15px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
+    border-right: 1px solid #111;
+    border-left: 1px solid #555;
+    color: #FFFFFF;
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    height: 20px;
+    padding: 11px 15px;
 }
 
 #navigation li a:hover {

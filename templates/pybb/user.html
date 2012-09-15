@@ -10,14 +10,14 @@
         {% thumbnail target_user.get_profile.avatar "80x80" as avatar %}
             <img src="{{ avatar.url }}" alt="avatar">
         {% empty %}
-            <img src="{{ STATIC_URL }}images/default_avatar.jpg" alt="avatar">
+            <img src="{{ static_url }}images/default_avatar.jpg" alt="avatar">
         {% endthumbnail %}
         </div>
         <div class="info">
-            <div class="label">{% trans "Statistics" %}</div>
-            <div>{% trans "Number of posts" %}: {{ target_user.posts.all.count }}.
+            <div class="label"><strong>{% trans "Statistics" %}</strong></div>
+            <div>{% trans "Number of posts" %}: {{ target_user.posts.all.count }}
             </div>
-            <div>{% trans "Number of topics" %}: {{ topic_count }}.
+            <div>{% trans "Number of topics" %}: {{ topic_count }}
                 {% comment %}
                 &nbsp;
                 <a href="{% url pybb:user_topics profile.username %}">
@@ -25,19 +25,22 @@
                 </a>
                 {% endcomment %}
             </div>
-            <div>{% trans "Date of registration" %}: {% pybb_time target_user.date_joined %}</div>
+            <div>{% trans "Date registered" %}: {% pybb_time target_user.date_joined %}</div>
         </div>
         <div class="clear"></div>
     </div>
+    
+    
+    {% ifequal user target_user.get_profile.user %}
     <div class='controls'>
-    	<a href="{% url pybb:edit_profile %}">Edit your profile &raquo;</a> | 
+    	<a href="{% url pybb:edit_profile %}">Edit your profile</a> | 
     	<a href="{% url auth_password_reset %}">Change your password</a> | 
+        {% ifnotequal user target_user.get_profile.user %}
         {% if perms.pybb.block_users %}
-            <a href='{% url pybb:block_user target_user.username %}'>{% trans 'Block' %}</a>
+            <a href='{% url pybb:block_user target_user.username %}'>{% trans 'Block this user' %}</a> | 
         {% endif %}
-        {% if perms.pybb.can_edit %}
-            <a href='{% url admin:pybb_profile_change target_user.pybb_profile.id %}'>{% trans 'Edit' %}</a>
-        {% endif %}
+        {% endifnotequal %}
     </div>
+    {% endifequal %}
 
 {% endblock %}

@@ -37,12 +37,10 @@
         <td class="content">
         
         {% if post.user.is_superuser %}
-        abc
         {{ post.body|safe }}
-        
         {% else %}
-        
-        {{ post.body_html|safe }}{% endif %}
+        {{ post.body_html|safe }}
+        {% endif %}
             
             {% if not forloop.first %}
             {% if not user.is_authenticated or user.get_profile.show_signatures %}

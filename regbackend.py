@@ -3,12 +3,23 @@ from django.contrib.sites.models import RequestSite
 from django.contrib.sites.models import Site
 
 from registration import signals
-from registration.forms import RegistrationForm
+from registration.forms import RegistrationForm as BaseRegistrationForm
 from registration.models import RegistrationProfile
+
+from django import forms
+from captcha.fields import CaptchaField
 
 from pybb.models import Profile
 
 
+# A CUSTOM REGISTRATION FORM INVOLVING A CAPTCHA
+class RegistrationForm(BaseRegistrationForm):
+
+    captcha = CaptchaField()
+    
+
+
+# THE CUSTOM BACKEND LOGIC
 class RegBackend(object):
     """
     This is a custom backend that does the usual registration profile creation, 

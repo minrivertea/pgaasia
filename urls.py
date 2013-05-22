@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^$', 'pgaasia.website.views.home', name='home'),
     url(r'^migrate_forums$', 'pgaasia.website.views.create_forums', name='create_forums'),
     # url(r'^website/', include('website.foo.urls')),
+    url(r'^captcha/', include('captcha.urls')),
     (r'^forum/', include('pybb.urls', namespace='pybb')),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

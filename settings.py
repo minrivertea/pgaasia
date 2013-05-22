@@ -130,6 +130,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'registration',
     'pgaasia.website',
+    'captcha',
 )
 
 # forum specific settings
@@ -138,6 +139,11 @@ PYBB_DEFAULT_AVATAR_URL = 'images/default_avatar.jpg'
 PYBB_AVATAR_WIDTH = '100'
 PYBB_AVATAR_HEIGHT = '100'
 
+
+# DJANGO-CAPTCHA
+# -----------------------------------------------
+CAPTCHA_FONT_SIZE = 35
+CAPTCHA_LETTER_ROTATION = None
 
 #django-registration settings
 ACCOUNT_ACTIVATION_DAYS = 7
